@@ -60,6 +60,8 @@ functions:
           method: get
   calculateRandomNumber:
     handler: handler.calculateRandomNumber
+  moreCalculations:
+    handler: handler.moreCalculations
 
 stepFunctions:
   stateMachines:
@@ -72,6 +74,10 @@ stepFunctions:
           calculateRandomNumber:
             Type: Task
             Resource: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:${self:service}-${opt:stage}-calculateRandomNumber
+            Next: moreCalculations
+          moreCalculations:
+            Type: Task
+            Resource: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:${self:service}-${opt:stage}-moreCalculations
             End: true
 
 #    The following are a few example events you can configure

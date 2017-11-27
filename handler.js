@@ -26,6 +26,17 @@ module.exports.executeStepFunction = (event, context, callback) => {
 
 module.exports.calculateRandomNumber = (event, context, callback) => {
   console.log('calculateRandomNumber was called');
+
+  let result = event.number;
+  console.log(result);
+
+  callback(null, { result });
+};
+
+module.exports.moreCalculations = (event, context, callback) => {
+  console.log('moreCalculations was called');
+  console.log(event);
+
   callback(null, null);
 };
 
